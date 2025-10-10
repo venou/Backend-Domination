@@ -1,7 +1,3 @@
-Awesome! Here's a **polished, GitHub-ready README** with badges and a clean look for your backend learning repo. You can copy-paste it directly:
-
----
-
 # 🖥️ Backend Learning Journey
 
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat\&logo=node.js\&logoColor=white)
