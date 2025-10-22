@@ -3,6 +3,7 @@
 
 # Lock file
 /package-lock.json
+/package.json
 
 # Environment files
 .env
