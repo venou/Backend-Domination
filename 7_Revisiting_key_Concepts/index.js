@@ -16,8 +16,22 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   fs.readdir(`./files`, (err, files) => {
-    res.render("index");
+    res.render("index", { files: files });
   });
+});
+
+app.post("/create", (req, res) => {
+  fs.writeFile(
+    `./files/${req.body.title.split(" ").join("")}.txt`,
+    req.body.details,
+    (err) => {
+      if (err) {
+        console.error("Error creating file:", err);
+        return res.status(500).send("Failed to create task");
+      }
+      res.redirect("/");
+    }
+  );
 });
 
 app.listen(3000);

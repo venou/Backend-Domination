@@ -1,0 +1,1 @@
+I have faced a lot of problems in writting of ejs syntax
