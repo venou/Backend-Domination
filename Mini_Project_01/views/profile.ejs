@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Profile</title>
+  </head>
+
+  <body class="bg-zinc-900 text-white min-h-screen">
+    <div class="max-w-3xl mx-auto px-6 py-10">
+      <!-- Logout Button -->
+      <div class="flex justify-end mb-8">
+        <a
+          href="/logout"
+          class="bg-red-500 hover:bg-red-600 transition-all rounded-md px-4 py-2 text-sm font-semibold shadow-md"
+        >
+          Logout
+        </a>
+      </div>
+
+      <!-- Greeting -->
+      <div class="mb-10 text-center md:text-left">
+        <h1 class="text-4xl font-bold mb-2 tracking-tight">
+          Hello, <span class="text-blue-400"><%= user.name %></span> 👋
+        </h1>
+        <p class="text-lg text-zinc-400">
+          What’s on your mind today? Create a post below.
+        </p>
+      </div>
+
+      <!-- Post Form -->
+      <form
+        action="/post"
+        method="POST"
+        class="bg-zinc-800 rounded-xl p-6 shadow-lg w-full mb-12 border border-zinc-700 hover:border-blue-500/40 transition-colors"
+      >
+        <textarea
+          name="content"
+          rows="4"
+          class="bg-transparent outline-none mb-4 border border-zinc-700 focus:border-blue-500 transition-all rounded-md p-3 resize-none w-full text-sm placeholder-zinc-500"
+          placeholder="Share something interesting..."
+          required
+        ></textarea>
+
+        <div class="flex justify-end">
+          <input
+            type="submit"
+            value="Create Post"
+            class="cursor-pointer px-6 py-2 bg-blue-500 hover:bg-blue-600 transition-all rounded-md text-sm font-semibold shadow-sm"
+          />
+        </div>
+      </form>
+
+      <!-- Posts Section -->
+      <section>
+        <h3 class="text-2xl font-semibold mb-6 border-b border-zinc-700 pb-2">
+          Your Posts
+        </h3>
+
+        <div class="space-y-6">
+          <!-- Example Post -->
+
+          <% user.posts.reverse().forEach(function (post) { %>
+          <article
+            class="border border-zinc-700 bg-zinc-800 rounded-xl p-5 shadow-md hover:shadow-blue-500/10 transition-all"
+          >
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-blue-400 font-semibold"><%= user.username %></h4>
+              <span class="text-xs text-zinc-500"><%= post.date %> </span>
+            </div>
+
+            <p class="text-zinc-300 leading-relaxed mb-4">
+              <%= post.content %>
+            </p>
+
+            <div class="flex space-x-4 text-sm">
+              <a
+                href="#"
+                class="text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                >❤️ Like</a
+              >
+              <a
+                href="#"
+                class="text-green-400 hover:text-green-300 font-medium transition-colors"
+                >✏️ Edit</a
+              >
+              <a
+                href="#"
+                class="text-red-400 hover:text-red-300 font-medium transition-colors"
+                >🗑️ Delete</a
+              >
+            </div>
+          </article>
+          <% }) %>
+
+          <!-- Repeat post cards dynamically here -->
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
