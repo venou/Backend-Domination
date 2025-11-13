@@ -5,6 +5,7 @@ const postModel = require("./models/post");
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const user = require("./models/user");
 
 app.set("view engine", "ejs");
 app.use(express.json());
@@ -24,6 +25,23 @@ app.get("/profile", isLoggedIn, async (req, res) => {
     .findOne({ email: req.user.email })
     .populate("posts");
   res.render("profile", { user });
+});
+
+app.get("/like/:id", isLoggedIn, async (req, res) => {
+  let post = await postModel.findOne({ _id: req.params.id });
+
+  const userId = req.user.userId;
+
+  const index = post.likes.indexOf(userId);
+
+  if (index === -1) {
+    post.likes.push(userId); // like
+  } else {
+    post.likes.splice(index, 1); // unlike
+  }
+
+  await post.save();
+  res.redirect("/profile");
 });
 
 app.post("/post", isLoggedIn, async (req, res) => {
