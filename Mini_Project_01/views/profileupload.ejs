@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Profile-Upload</title>
+  </head>
+
+  <body class="bg-zinc-900 text-white min-h-screen">
+    <div class="max-w-3xl mx-auto px-6 py-10">
+      <!-- Logout Button -->
+      <div class="flex justify-end mb-8">
+        <a
+          href="/logout"
+          class="bg-red-500 hover:bg-red-600 transition-all rounded-md px-4 py-2 text-sm font-semibold shadow-md"
+        >
+          Logout
+        </a>
+      </div>
+      <div class="mb-10 text-center md:text-left">
+        <p class="text-lg text-zinc-400">Upload Profile pic</p>
+      </div>
+
+      <!-- Post Form -->
+      <form
+        action="/upload"
+        method="POST"
+        enctype="multipart/form-data"
+        class="bg-zinc-800 rounded-xl p-6 shadow-lg w-full mb-12 border border-zinc-700 hover:border-blue-500/40 transition-colors"
+      >
+        <div class="flex justify-center">
+          <input type="file" name="image" />
+          <input
+            class="bg-blue-500 px-3 py-2 rounded-md"
+            type="submit"
+            value="Upload Image"
+          />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

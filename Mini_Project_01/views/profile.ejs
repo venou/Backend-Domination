@@ -10,7 +10,14 @@
   <body class="bg-zinc-900 text-white min-h-screen">
     <div class="max-w-3xl mx-auto px-6 py-10">
       <!-- Logout Button -->
-      <div class="flex justify-end mb-8">
+      <div class="flex justify-between mb-8">
+        <div class="profile-image w-10 h-10">
+          <img
+            class="w-full h-full object-cover rounded-full overflow-hidden"
+            src="/images/uploads/<%= user.profilepic %>"
+            alt="Profile Picture"
+          />
+        </div>
         <a
           href="/logout"
           class="bg-red-500 hover:bg-red-600 transition-all rounded-md px-4 py-2 text-sm font-semibold shadow-md"
