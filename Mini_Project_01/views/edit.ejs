@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Edit</title>
+  </head>
+
+  <body class="bg-zinc-900 text-white min-h-screen">
+    <div class="max-w-3xl mx-auto px-6 py-10">
+      <!-- Logout Button -->
+      <div class="flex justify-end mb-8">
+        <a
+          href="/logout"
+          class="bg-red-500 hover:bg-red-600 transition-all rounded-md px-4 py-2 text-sm font-semibold shadow-md"
+        >
+          Logout
+        </a>
+      </div>
+      <div class="mb-10 text-center md:text-left">
+        <p class="text-lg text-zinc-400">Edit Your Post.</p>
+      </div>
+
+      <!-- Post Form -->
+      <form
+        action="/update/<%= post._id %>"
+        method="POST"
+        class="bg-zinc-800 rounded-xl p-6 shadow-lg w-full mb-12 border border-zinc-700 hover:border-blue-500/40 transition-colors"
+      >
+        <textarea
+          name="content"
+          rows="4"
+          class="bg-transparent outline-none mb-4 border border-zinc-700 focus:border-blue-500 transition-all rounded-md p-3 resize-none w-full text-sm placeholder-zinc-500"
+          placeholder="<%= post.content %>"
+          required
+        ></textarea>
+
+        <div class="flex justify-end">
+          <input
+            type="submit"
+            value="Update Post"
+            class="cursor-pointer px-6 py-2 bg-yellow-500 hover:bg-yellow-600 transition-all rounded-md text-sm font-semibold shadow-sm"
+          />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
